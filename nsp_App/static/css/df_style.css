@@ -1,0 +1,46 @@
+body {
+  background: #b4f0e9;
+  color: block;
+}
+
+.table_div{
+  width: 600px;
+  height:690px;
+  overflow: scroll;
+
+}
+
+
+.symbol_table_div{
+  width: 600px;
+  height: 300px;
+  overflow: scroll;
+
+}
+
+
+#header{
+  text-align:center;
+  font-size: xx-large;
+  font-family: initial;
+  color:blue;
+  font-weight: bold;
+}
+
+#header1{
+  font-size: x-large;
+  font-family: initial;
+  color:lightsalmon;
+  font-weight: bold;
+}
+
+#header2{
+  font-size: x-large;
+  font-family: initial;
+  color:lightsalmon;
+  font-weight: bold;
+}
+
+
+
+

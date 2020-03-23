@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>StackMarketAnalysis</title>
+    {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--    <script src="{% static '/js/currency_page.js' %}"></script>-->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/df_style.css' %}">
+</head>
+<style type="text/css">
+ .mystyle {
+    font-size: 20pt;
+    font-family: Arial;
+    border-collapse: collapse;
+    border: 5px solid silver;
+
+}
+
+.mystyle td, th {
+    padding: 10px;
+}
+
+.mystyle tr:nth-child(even) {
+    background: #E0E0E0;
+}
+
+.mystyle tr:hover {
+    background: silver;
+    cursor: pointer;
+}
+
+</style>
+
+<body>
+
+
+
+  <div class="container-fluid">
+      <h2 class="well well-lg" id="header">
+          Data Analytics of National Stock Exchange</h2>
+        <div class="row">
+          <div class="col-lg-6">
+              <p id="header1">last 30 days data from National Stock Exchange </p>
+              <div class="table_div">
+                    {{stack_data|safe}}
+              </div>
+              <div> </div>
+          </div>
+          <div class="col-lg-6 ">
+              <form action="/symbolAPI" method="post">
+                  {% csrf_token %}
+                  <p id="header2">select a particular symbol data analysis </p>
+                      <select class="form-control"  name="symbol" style="width:200px">
+                          {% if symbolName != "" %}
+                          <option name="symbol">{{ symbolName }}</option>
+                          {% for item in columns %}
+                                    <option name="symbol">{{ item }}</option>
+                               {% endfor %}
+                          {% else %}
+                               {% for item in columns %}
+                                    <option name="symbol">{{ item }}</option>
+                               {% endfor %}
+                          {% endif %}
+                      </select>
+                      <button type="submit" class="btn btn-info"
+                              style="font-size:medium; font-weight:bold;margin-left:230px;margin-top:-56px;">
+                          Show</button>
+              </form>
+              {% if symbolData == "true" %}
+              <div class="symbol_table_div">
+                    {{symbol_stack_data|safe}}
+              </div>
+              <img src="/media/symbol_data.png" style="width:597px;height:300px;margin-top: 25px;">
+              {% else %}
+              <div>  </div>
+              {% endif %}
+          </div>
+        </div>
+  </div>
+
+
+</body>
+</html>

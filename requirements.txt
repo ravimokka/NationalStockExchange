@@ -1,0 +1,9 @@
+python>=3.7
+django>=2.2
+requests>=2.23
+zipfile>=2.0
+pandas>=1.0
+nsepy>=0.8
+matplotlib>=3.2
+
+
